@@ -6,7 +6,7 @@ import { toast } from 'react-hot-toast';
 import './CheckoutPage.css';
 
 function CheckoutForm() {
-  const { user, updateCartCount } = useAuth();
+const { updateCartCount } = useAuth();
   const navigate = useNavigate();
 
   // CART

@@ -1,5 +1,5 @@
 // src/components/CartPage.js
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import { useAuth } from '../context/AuthContext';
 import { api } from '../services/api';
 import { Link, useNavigate } from 'react-router-dom'; // ✅ Added useNavigate
@@ -15,11 +15,8 @@ function CartPage() {
   const [updating, setUpdating] = useState({});
   const navigate = useNavigate(); // ✅ Defined navigate
 
-  useEffect(() => {
-    loadCart();
-  }, [loadCart]);
 
-  const loadCart = async () => {
+  const loadCart = useCallback(async () => {
     try {
       const data = await api.getCart();
       setCart(data);
@@ -30,7 +27,11 @@ function CartPage() {
     } finally {
       setLoading(false);
     }
-  };
+}, [updateCartCount]);
+
+useEffect(() => {
+    loadCart();
+  }, [loadCart]);
 
 //   const updateQuantity = async (productId, newQty) => {
 //     if (newQty < 1) return;

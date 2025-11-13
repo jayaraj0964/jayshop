@@ -1,5 +1,5 @@
 // src/components/AdminDashboard.jsx
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 import { api } from '../services/api';
 import { toast } from 'react-hot-toast';
 import './AdminDashboard.css';
@@ -19,12 +19,9 @@ export default function AdminDashboard() {
   const [loading, setLoading] = useState(true);
   const [userRole, setUserRole] = useState({});
 
-  useEffect(() => {
-    loadData();
-  }, [loadData]);
 
-  const loadData = async () => {
-    try {
+  const loadData = useCallback(async () => {
+      try {
       setLoading(true);
       if (activeTab === 'products') {
         const prodRes = await api.getAllProductsAdmin();
@@ -41,7 +38,10 @@ export default function AdminDashboard() {
     } finally {
       setLoading(false);
     }
-  };
+}, [activeTab]);
+useEffect(() => {
+    loadData();
+  }, [loadData]);
 
   const filteredProducts = products.filter(p =>
     p.name?.toLowerCase().includes(searchTerm.toLowerCase()) ||
