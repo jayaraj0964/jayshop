@@ -1,24 +1,62 @@
-import logo from './logo.svg';
-import './App.css';
+// src/App.jsx
+import React from 'react';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { AuthProvider } from './context/AuthContext';
+import FlipkartNavbar from './components/Navbar';
+import UserDashboard from './components/UserDashboard';
+import CartPage from './components/CartPage';
+// import Login from './components/Login'
+import Login from './components/Login';
+import Register from './components/Register';
+import ProductForm from './components/ProductForm';
+import PrivateRoute from './components/PrivateRoute';
+import { Check } from 'lucide-react';
+import CheckoutPage from './components/CheckoutPage';
+import OrderSuccessPage from './components/OrderSuccessPage';
+import { Toaster } from 'react-hot-toast';
+import AdminDashboard from './components/AdminDashboard';
+import UserOrdersPage from './components/UserOrdersPage';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <AuthProvider>
+      <Toaster position="top-center" />
+      <Router>
+        <FlipkartNavbar />  {/* ← Navbar everywhere */}
+
+        <Routes>
+          {/* HOME = Products */}
+          <Route path="/" element={<UserDashboard />} />
+
+          {/* CART */}
+          <Route path="/cart" element={<CartPage />} />
+
+          {/* LOGIN */}
+          <Route path="/login" element={<Login />} />
+
+          {/* REGISTER */}
+          <Route path="/register" element={<Register />} />
+
+          <Route path='/checkout' element={<CheckoutPage />} />
+
+          <Route path="/order-success" element={<OrderSuccessPage />} />
+         
+         <Route path="/admindashboard" element={<AdminDashboard />} />
+
+        <Route path="/orders" element={<UserOrdersPage />} />
+
+          {/* ADMIN */}
+          <Route
+            path="/createproduct"
+            element={
+              <PrivateRoute adminOnly>
+                <ProductForm />
+              </PrivateRoute>
+            }
+          />
+        </Routes>
+      </Router>
+    </AuthProvider>
   );
 }
 
