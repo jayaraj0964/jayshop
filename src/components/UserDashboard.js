@@ -68,7 +68,7 @@ function UserDashboard() {
 
   return (
     <div className="dashboard">
-      <h2>Welcome, {displayName}!</h2>
+      {/* <h2>Welcome, {displayName}!</h2> */}
       <p>Your Cart: {cartCount > 0 ? `${cartCount} items` : 'Empty'}</p>
 
       {loading ? (
