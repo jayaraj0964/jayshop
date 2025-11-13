@@ -3,8 +3,7 @@ import React, { useState, useEffect } from 'react';
 import { useAuth } from '../context/AuthContext';
 import { api } from '../services/api';
 import { Link } from 'react-router-dom';
-import { useNavigate } from 'react-router-dom';
-import toast from 'react-hot-toast'; // IMPORT TOAST
+import toast from 'react-hot-toast'; 
 import './UserDashboard.css';
 
 const NO_IMAGE = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mNkYPhfDwAChwGA60e6kgAAAABABJRU5ErkJggg==";
@@ -13,7 +12,7 @@ function UserDashboard() {
   const { user, cartCount, updateCartCount } = useAuth();
   const [products, setProducts] = useState([]);
   const [loading, setLoading] = useState(true);
-  const navigate = useNavigate();
+  // const navigate = useNavigate();
 
   useEffect(() => {
     const loadProducts = async () => {

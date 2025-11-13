@@ -5,12 +5,10 @@ import { AuthProvider } from './context/AuthContext';
 import FlipkartNavbar from './components/Navbar';
 import UserDashboard from './components/UserDashboard';
 import CartPage from './components/CartPage';
-// import Login from './components/Login'
 import Login from './components/Login';
 import Register from './components/Register';
 import ProductForm from './components/ProductForm';
 import PrivateRoute from './components/PrivateRoute';
-import { Check } from 'lucide-react';
 import CheckoutPage from './components/CheckoutPage';
 import OrderSuccessPage from './components/OrderSuccessPage';
 import { Toaster } from 'react-hot-toast';

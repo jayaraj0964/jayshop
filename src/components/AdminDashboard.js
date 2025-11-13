@@ -21,7 +21,7 @@ export default function AdminDashboard() {
 
   useEffect(() => {
     loadData();
-  }, [activeTab]);
+  }, [loadData]);
 
   const loadData = async () => {
     try {

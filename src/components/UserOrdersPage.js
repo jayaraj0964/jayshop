@@ -2,7 +2,7 @@
 import { useEffect, useState } from 'react';
 import { api } from '../services/api';
 import { toast } from 'react-hot-toast';
-import { Package, Search, Calendar, CreditCard, ChevronRight, MapPin, Download, MessageCircle } from 'lucide-react';
+import { Package, Search, CreditCard, ChevronRight, MapPin, Download, MessageCircle } from 'lucide-react';
 import './UserOrdersPage.css';
 
 export default function UserOrdersPage() {
