@@ -76,7 +76,9 @@ function UserDashboard() {
           {[...Array(6)].map((_, i) => (
             <div key={i} className="product-card skeleton-card">
               <div className="image-container skeleton"></div>
-              <h3 className="skeleton-text short"></h3>
+              <h3 className="skeleton-text short" aria-label="Loading product name">
+                &nbsp;
+                </h3>
               <p className="skeleton-text medium"></p>
             </div>
           ))}
