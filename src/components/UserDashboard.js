@@ -30,7 +30,7 @@ function UserDashboard() {
     loadProducts();
   }, [user]);
 
-  const displayName = user?.email?.split('@')[0] || 'Guest';
+  // const displayName = user?.email?.split('@')[0] || 'Guest';
 
   // ADD TO CART WITH FRONTEND STOCK CHECK
   const addToCart = async (productId, stock) => {
