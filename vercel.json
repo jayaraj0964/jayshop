@@ -1,11 +1,10 @@
 {
-  "builds": [
+  "rewrites": [
     {
-      "src": "package.json",
-      "use": "@vercel/node"
+      "source": "/(.*)",
+      "destination": "/index.html"
     }
   ],
-  "env": {
-    "NPM_CONFIG_LOGLEVEL": "error"
-  }
+  "cleanUrls": true,
+  "trailingSlash": false
 }
